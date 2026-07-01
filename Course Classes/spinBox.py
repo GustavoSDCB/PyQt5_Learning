@@ -22,9 +22,7 @@ class Window(QWidget):
         self.spinBox.setSuffix(",00")
         # Setting the value of the step (when you click the arrow, how many values it'll increase/decrease each click)
         self.spinBox.setSingleStep(2)
-        # Getting the value
-        value = self.spinBox.value()
-        # There's also a function of this object that you can call that is the same as the one in QPushButton (clicked.connect), here it is valueChanged.connect()
+        # There's also a function for this object that you can call that has offers the same result as the one in QPushButton (clicked.connect), here it is valueChanged.connect()
         self.spinBox.move(100, 70)
         self.spinBox.setFont(font)
 
