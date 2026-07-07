@@ -1,5 +1,5 @@
 import sys
-from PyQt5.QtWidgets import *
+from PyQt5.QtWidgets import QComboBox, QPushButton, QApplication, QWidget
 
 class Window(QWidget):
     def __init__(self) -> None:

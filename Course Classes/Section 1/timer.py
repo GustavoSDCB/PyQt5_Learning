@@ -1,5 +1,5 @@
 import sys
-from PyQt5.QtWidgets import *
+from PyQt5.QtWidgets import QLabel, QWidget, QApplication, QPushButton
 from PyQt5.QtGui import QFont
 from PyQt5.QtCore import QTimer
 

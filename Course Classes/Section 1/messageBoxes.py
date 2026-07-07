@@ -1,5 +1,5 @@
 import sys
-from PyQt5.QtWidgets import *
+from PyQt5.QtWidgets import QWidget, QApplication, QPushButton, QMessageBox
 from PyQt5.QtGui import QFont
 
 font = QFont("Times", 10, 100)     # Setting up a new Font Style

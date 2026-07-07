@@ -1,5 +1,5 @@
 import sys
-from PyQt5.QtWidgets import *
+from PyQt5.QtWidgets import QWidget, QLineEdit, QPushButton, QMessageBox, QApplication, QListWidget
 from PyQt5.QtGui import QFont
 
 font = QFont("Comic Sans MS", 10)

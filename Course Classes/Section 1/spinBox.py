@@ -1,5 +1,5 @@
 import sys
-from PyQt5.QtWidgets import *
+from PyQt5.QtWidgets import QWidget, QApplication, QSpinBox, QPushButton
 from PyQt5.QtGui import QFont
 
 font = QFont("Comic", 15)

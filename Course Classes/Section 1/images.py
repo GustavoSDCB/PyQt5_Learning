@@ -1,5 +1,5 @@
 import sys
-from PyQt5.QtWidgets import *
+from PyQt5.QtWidgets import QWidget, QLabel, QApplication, QPushButton 
 from PyQt5.QtGui import QPixmap     # Needed to display images
 
 class Window(QWidget):

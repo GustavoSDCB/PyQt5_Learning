@@ -1,5 +1,5 @@
 import sys
-from PyQt5.QtWidgets import *
+from PyQt5.QtWidgets import QApplication, QWidget
 
 # This is the default code that we need to use in order
 # to build your Application.

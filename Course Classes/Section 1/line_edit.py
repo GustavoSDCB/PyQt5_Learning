@@ -1,5 +1,5 @@
 import sys
-from PyQt5.QtWidgets import *
+from PyQt5.QtWidgets import QLabel, QWidget, QApplication, QLineEdit, QPushButton
 
 class Window(QWidget):
     def __init__(self):
