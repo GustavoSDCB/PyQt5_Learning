@@ -44,19 +44,32 @@ class Window(QWidget):
         # Title
         self.title = QLabel("Rock, Paper and Scisor game", self)
         self.title.setFont(font)
-        self.title.move(60, 1)
+        self.title.move(60, 60)
 
-        # Game Images Setup
-        self.setGameImages()
+        # Vs hidden label
+        self.vs = QLabel("Vs", self)
+        self.vs.move(195, 115)
+        self.vs.setFont(font)
+        self.vs.hide()
 
-        # Game Buttons Setup
-        self.setGameButtons()
+        # Game Setup
+        self.gameSetup()
+
+        # Hidden Try Again / Result
+        self.tryAgain = QPushButton("Try Again", self)
+        self.tryAgain.setFont(font)
+        self.tryAgain.move(150, 200)
+        self.tryAgain.hide()
+        self.tryAgain.clicked.connect(self.tryAgainAct)
+
+        self.result = QLabel("", self)
+        self.result.setFont(font)
+        self.result.move(160, 165)
 
         self.show()
 
-    def setGameImages(self):
+    def gameSetup(self):
         self.images = {}
-
         for player, x in positionPlayers.items():
             for choice, path in paths.items():
                 label = QLabel(self)
@@ -64,12 +77,11 @@ class Window(QWidget):
                 label.resize(50, 50)
                 label.setScaledContents(True)
                 label.move(x, 110)
-                # label.hide()
+                label.hide()
                 self.images[(player, choice)] = label
 
-    def setGameButtons(self):
+            
         self.buttons = {}
-
         for choice, path in paths.items():
             label = QPushButton(self)
             label.setIcon(QIcon(path))
@@ -80,23 +92,48 @@ class Window(QWidget):
             label.clicked.connect(lambda checked, c=choice: self.game(c))
             self.buttons[choice] = label
 
-    def game(self, player:str):
+    def game(self, choice:str):
         # Computer's Hand
         i = random.randint(0, 2)
-        oponent = opt[i]
+        cmpChoice = opt[i]
 
-        # Game setup     
-        if player == oponent:
-            print(f"Your hand: {player}\nOponent's hand: {oponent}")
-            print("Draw!")
+        # Showing both hand
+        self.images[('player', choice)].show()
+        self.images[('computer', cmpChoice)].show()
+        self.vs.show()
         
-        elif player != rules[oponent]:
-            print(f"Your hand: {player}\nOponent's hand: {oponent}")
-            print("You win!")
+        # Hiding option buttons
+        for button in self.buttons.values():
+            button.hide()
+
+        # Showing hidden try again button
+        self.tryAgain.show()
+
+        # Game Result    
+        if choice == cmpChoice:
+            self.result.setText("   Draw!")
+            self.result.adjustSize()
+        
+        elif choice != rules[cmpChoice]:
+            self.result.setText("You Win!")
+            self.result.adjustSize()
 
         else:
-            print(f"Your hand: {player}\nOponent's hand: {oponent}")
-            print("You lost!")
+            self.result.setText("You Lost!")
+            self.result.adjustSize()
+
+        self.result.show()
+
+    def tryAgainAct(self):
+        for image in self.images.values():
+            image.hide()
+
+        for button in self.buttons.values():
+            button.show()
+
+        self.tryAgain.hide()
+        self.vs.hide()
+        self.result.hide()
 
 
 def main():
